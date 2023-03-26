@@ -66,7 +66,12 @@ func main() {
 func loadURI() (string, error) {
 	file, err := os.Open("config.txt")
 	if err != nil {
-		return "", err
+		uri := "http://localhost/execute"
+		err := saveURI(uri)
+		if err != nil {
+			return "", err
+		}
+		return uri, nil
 	}
 	defer file.Close()
 
