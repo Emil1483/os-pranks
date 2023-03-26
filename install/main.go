@@ -34,6 +34,7 @@ func getEnv(key, defaultValue string) string {
 func main() {
 	http.HandleFunc("/server.exe", buildFileHandler("server.exe"))
 	http.HandleFunc("/client.exe", buildFileHandler("client.exe"))
+	http.HandleFunc("/install.bat", buildFileHandler("install.bat"))
 
 	port := getEnv("PORT", "8080")
 
