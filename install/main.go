@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"os"
 )
@@ -34,6 +35,10 @@ func main() {
 	http.HandleFunc("/server.exe", buildFileHandler("server.exe"))
 	http.HandleFunc("/client.exe", buildFileHandler("client.exe"))
 
-	port := getEnv("PORT", ":8080")
-	http.ListenAndServe(port, nil)
+	port := getEnv("PORT", "8080")
+
+	fmt.Println("Starting server at port", port)
+	if err := http.ListenAndServe(":"+port, nil); err != nil {
+		log.Fatal(err)
+	}
 }
