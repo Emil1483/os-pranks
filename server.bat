@@ -1,0 +1,1 @@
+go run C:\development\os-pranks\server\main.go
